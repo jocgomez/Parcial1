@@ -19,7 +19,6 @@ public class MainActivity extends TabActivity {
 
         TabHost.TabSpec tab1 = tabHost.newTabSpec("Ejercicio 1");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Ejercicio 2");
-        TabHost.TabSpec tab3 = tabHost.newTabSpec("Ejercicio 3");
 
         tab1.setIndicator("Punto 1");//Setea el nombre del tab 1
         //Intencion para cargar el contenido del tab 1
@@ -31,6 +30,5 @@ public class MainActivity extends TabActivity {
 
         tabHost.addTab(tab1); //Agrega el tab1 al tabhost
         tabHost.addTab(tab2); //Agrega el tab2 al tabhost
-        tabHost.addTab(tab3); //Agrega el tab3 al tabhost
     }
 }
