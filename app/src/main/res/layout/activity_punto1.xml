@@ -30,7 +30,7 @@
         android:layout_y="130dp"
         android:ems="10"
         android:hint="1234567890"
-        android:inputType="textPersonName" />
+        android:inputType="none|number" />
 
     <Spinner
         android:id="@+id/sintomas"

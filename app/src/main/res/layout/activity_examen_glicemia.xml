@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".ExamenGlicemia">
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="152dp"
+        android:layout_y="17dp"
+        android:text="Examen glicemia" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="22dp"
+        android:layout_y="57dp"
+        android:text="Tienes sintoma de" />
+
+    <TextView
+        android:id="@+id/tvSintoma"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_x="144dp"
+        android:layout_y="57dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="143dp"
+        android:layout_y="104dp"
+        android:onClick="verResultado"
+        android:text="Ver resultado" />
 </AbsoluteLayout>
