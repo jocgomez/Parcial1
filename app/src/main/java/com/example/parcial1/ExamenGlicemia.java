@@ -4,9 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -14,6 +16,7 @@ public class ExamenGlicemia extends Activity {
 
     TextView sintoma;
     double valorExamen;
+    String cuadroDiabetico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +40,19 @@ public class ExamenGlicemia extends Activity {
 
         if(valorExamen>=7.0 && valorExamen<13.8)
         {
-            recomendacion = "El resultado de tu examen de glicemia fue de: "+valorExamen+"\nRecomendaciones: \nIndicar glucemia en ayunas y TGP en pacientes sin diagnóstico. - Si deshidratación, rehidratación oral o EV según las demandas. - Reevaluar conducta terapéutica en diabéticos y cumplimiento de los pilares. - Reevaluar dosis de hipoglucemiantes.";
+            cuadroDiabetico = "HIPERGLICEMIA AISLADA";
+            recomendacion = cuadroDiabetico+"\n\nEl resultado de tu examen de glicemia fue de: "+valorExamen+"\n\nRecomendaciones: \n\nIndicar glucemia en ayunas y TGP en pacientes sin diagnóstico. - Si deshidratación, rehidratación oral o EV según las demandas. - Reevaluar conducta terapéutica en diabéticos y cumplimiento de los pilares. - Reevaluar dosis de hipoglucemiantes.";
             alerta(recomendacion);
         }else if(valorExamen>=13.8 && valorExamen<=33)
         {
-            recomendacion = "El resultado de tu examen de glicemia fue de: "+valorExamen+"\nRecomendaciones: \nCoordinar traslado y comenzar tratamiento. - Hidratación con Soluciónsalina 40 ml/Kg en las primeras 4 horas. 1-2 L la primera hora. -Administrar potasio al restituirse la diuresis o signos dehipopotasemia (depresión del ST, Onda U ≤ 1mv, ondas U≤ T). - Evitarinsulina hasta desaparecer signos de hipopotasemia. - Administrarinsulina simple 0,1 U/kg EV después de hidratar.";
-            alerta(recomendacion);
+            cuadroDiabetico = "CETOACIDOSIS DIABÉTICA";
+            recomendacion = cuadroDiabetico+"\n\nEl resultado de tu examen de glicemia fue de: "+valorExamen+"\n\nRecomendaciones: \n\nCoordinar traslado y comenzar tratamiento. - Hidratación con Solución salina 40 ml/Kg en las primeras 4 horas. 1-2 L la primera hora. -Administrar potasio al restituirse la diuresis o signos dehipopotasemia (depresión del ST, Onda U ≤ 1mv, ondas U≤ T). - Evitarinsulina hasta desaparecer signos de hipopotasemia. - Administrarinsulina simple 0,1 U/kg EV después de hidratar.";
+            eleccion(recomendacion);
         } else if(valorExamen>33)
         {
-            recomendacion = "El resultado de tu examen de glicemia fue de: "+valorExamen+"\nRecomendaciones: \nCoordinar traslado y comenzar tratamiento. - Hidratación con SoluciónSalina 10-15 ml/Kg/h hasta conseguir estabilidad hemodinámica. -Administrar potasio al restituirse la diuresis o signos dehipopotasemia (depresión del ST, Onda U ≤ 1mv, ondas U≤ T).";
-            alerta(recomendacion);
+            cuadroDiabetico = "ESTADO HIPEROSMOLAR HIPERGLUCÉMICO NO CETÓSICO";
+            recomendacion = cuadroDiabetico+"\n\nEl resultado de tu examen de glicemia fue de: "+valorExamen+"\n\nRecomendaciones: \n\nCoordinar traslado y comenzar tratamiento. - Hidratación con Solución salina 10-15 ml/Kg/h hasta conseguir estabilidad hemodinámica. -Administrar potasio al restituirse la diuresis o signos dehipopotasemia (depresión del ST, Onda U ≤ 1mv, ondas U≤ T).";
+            eleccion(recomendacion);
         }
     }
 
@@ -59,5 +65,38 @@ public class ExamenGlicemia extends Activity {
         dialogBuilder.setCancelable(true).setTitle("Titulo de la alerta");
         //Mostramos la alerta dialogBuilder
         dialogBuilder.create().show();
+    }
+    public void eleccion(String cadena)
+    {
+        //Se crea instancia para la alerta
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        //Establecemos el mensaje en la alerta
+        alertbox.setMessage(cadena);
+
+        //Elegimos la opcion positiva de la alerta
+        alertbox.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+            @Override
+            //En caso de presionar el botón realizara una acción
+            public void onClick(DialogInterface dialog, int which) {
+                mensaje("Se guardo la información correctamente");
+            }
+        });
+
+        //Elegimos la opcion negativa de la alerta
+        alertbox.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            //En caso de presionar el botón realizara una acción
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        //Se muestra la alertbox
+        alertbox.show();
+    }
+
+    public void mensaje(String cadena){
+        //Se crea el mensaje Toast con una longitud corta
+        Toast.makeText(this,cadena,Toast.LENGTH_SHORT).show();
     }
 }

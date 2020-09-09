@@ -34,7 +34,7 @@
 
     <Spinner
         android:id="@+id/sintomas"
-        android:layout_width="189dp"
+        android:layout_width="372dp"
         android:layout_height="wrap_content"
         android:layout_x="24dp"
         android:layout_y="300dp" />
