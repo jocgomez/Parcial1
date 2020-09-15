@@ -42,7 +42,7 @@ public class ExamenGlicemia extends Activity {
         {
             cuadroDiabetico = "HIPERGLICEMIA AISLADA";
             recomendacion = cuadroDiabetico+"\n\nEl resultado de tu examen de glicemia fue de: "+valorExamen+"\n\nRecomendaciones: \n\nIndicar glucemia en ayunas y TGP en pacientes sin diagnóstico. - Si deshidratación, rehidratación oral o EV según las demandas. - Reevaluar conducta terapéutica en diabéticos y cumplimiento de los pilares. - Reevaluar dosis de hipoglucemiantes.";
-            alerta(recomendacion);
+            eleccion(recomendacion);
         }else if(valorExamen>=13.8 && valorExamen<=33)
         {
             cuadroDiabetico = "CETOACIDOSIS DIABÉTICA";
@@ -56,16 +56,6 @@ public class ExamenGlicemia extends Activity {
         }
     }
 
-    public void alerta(String cadena){
-        //Se crea la instancia de la alerta
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        //Seleccionamos lo que vamos a mostrar
-        dialogBuilder.setMessage(cadena);
-        //Elegimos un titulo y configuramos para que se pueda quitar
-        dialogBuilder.setCancelable(true).setTitle("Titulo de la alerta");
-        //Mostramos la alerta dialogBuilder
-        dialogBuilder.create().show();
-    }
     public void eleccion(String cadena)
     {
         //Se crea instancia para la alerta

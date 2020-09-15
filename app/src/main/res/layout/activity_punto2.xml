@@ -1,9 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Punto2">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="156dp"
+        android:layout_y="366dp"
+        android:onClick="validarNivel2"
+        android:text="Validar" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="231dp"
+        android:layout_y="196dp"
+        android:text="Sexo:"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="68dp" />
+
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="218dp"
+        android:ems="10"
+        android:hint="Juanito Perez"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="196dp"
+        android:text="Correo:"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="68dp" />
+
+    <EditText
+        android:id="@+id/etEdad"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="296dp"
+        android:ems="10"
+        android:hint="23"
+        android:inputType="none|number" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="24dp"
+        android:layout_y="273dp"
+        android:text="Edad:" />
+
+    <EditText
+        android:id="@+id/etNHemo"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_x="231dp"
+        android:layout_y="130dp"
+        android:ems="10"
+        android:hint="0%"
+        android:inputType="none|number" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="232dp"
+        android:layout_y="107dp"
+        android:text="Nivel de Hemoglobina:" />
+
+    <EditText
+        android:id="@+id/etNombre2"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="130dp"
+        android:ems="10"
+        android:hint="Juanito Perez"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="161dp"
+        android:layout_y="23dp"
+        android:text="Test de Anemia"
+        tools:layout_editor_absoluteX="165dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="21dp"
+        android:layout_y="60dp"
+        android:text="Complete la siguiente información"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="108dp"
+        android:text="Nombre y apellido:"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="68dp" />
+
+    <Spinner
+        android:id="@+id/spinnerNH"
+        android:layout_width="275dp"
+        android:layout_height="43dp"
+        android:layout_x="109dp"
+        android:layout_y="296dp" />
+
+    <RadioGroup
+        android:layout_width="159dp"
+        android:layout_height="64dp"
+        android:layout_x="230dp"
+        android:layout_y="224dp">
+
+        <RadioButton
+            android:id="@+id/rBFem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Femenino" />
+
+        <RadioButton
+            android:id="@+id/rBMas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Masculino" />
+    </RadioGroup>
+
+</AbsoluteLayout>
