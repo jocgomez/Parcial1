@@ -100,4 +100,38 @@
         android:onClick="validarNivel"
         android:text="Validar" />
 
+    <Button
+        android:id="@+id/consultar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="29dp"
+        android:layout_y="435dp"
+        android:onClick="consultarBD"
+        android:text="Consultar" />
+
+    <Button
+        android:id="@+id/eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="282dp"
+        android:layout_y="433dp"
+        android:onClick="eliminarBD"
+        android:text="Eliminar" />
+
+    <Button
+        android:id="@+id/modificar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="161dp"
+        android:layout_y="433dp"
+        android:onClick="modificarBD"
+        android:text="Modificar" />
+
+    <TextView
+        android:id="@+id/patologia"
+        android:layout_width="337dp"
+        android:layout_height="72dp"
+        android:layout_x="34dp"
+        android:layout_y="520dp" />
+
 </AbsoluteLayout>
