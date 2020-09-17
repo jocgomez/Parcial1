@@ -22,7 +22,8 @@ public class Punto2 extends Activity {
     Spinner spinnerNH;
     RadioButton radioFem, radioMas;
 
-    String nombreApellidoValue ="", correoValue="", resultado ="", gender ="";
+    String nombreApellidoValue ="";
+    String correoValue="", resultado ="", gender ="";
     int edadValue = 0;
     double nHemoValue = 0;
 
@@ -187,13 +188,18 @@ public class Punto2 extends Activity {
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
-        Cursor fila = bd.rawQuery("select nombre, edad, sexo, tiempo, nHemo, anemia from pacientes2 where correo="+correo,null);
-        if(fila.moveToFirst())
-        {
-            existe = true;
-        }else{
-            mensaje("No se encontró paciente con ese correo");
+        try{
+            Cursor fila = bd.rawQuery("select nombre, edad, sexo, tiempo, nHemo, anemia from pacientes2 where correo="+correo,null);
+            if(fila.moveToFirst())
+            {
+                existe = true;
+            }else{
+                mensaje("No se encontró paciente con ese correo");
+            }
+        }catch (Exception e){
+
         }
+
         return existe;
     }
 
@@ -227,13 +233,13 @@ public class Punto2 extends Activity {
         dialogBuilder.create().show();
     }
 
-    public void insertar(String nombre, String correoVal, int edadVal, String sexoVal, String tiempo, double nivelHemoVal, String anemia){
+    public void insertar(String nombre, String correo, int edadVal, String sexoVal, String tiempo, double nivelHemoVal, String anemia){
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
         registro.put("nombre",nombre);
-        registro.put("correo",correoVal);
+        registro.put("correo",correo);
         registro.put("edad",edadVal);
         registro.put("sexo",sexoVal);
         registro.put("tiempo",tiempo);
@@ -253,33 +259,34 @@ public class Punto2 extends Activity {
     }
 
     public void consultarBD(View view) {
-        String correoV = "";
-        if(correoValue == "")
+        String correoV = correoET.getText().toString();
+        if(correoV == "")
         {
             mensaje("Es necesario el campo del correo");
         }else{
-            try {
-                correoV = correoET.getText().toString();
-            }catch (Exception e){}
+            correoV = correoET.getText().toString();
 
             AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
             SQLiteDatabase bd = admin.getWritableDatabase();
 
-            Cursor fila = bd.rawQuery("select nombre, edad, sexo, tiempo, nHemo, anemia from pacientes2 where correo=" +correoV,null);
-            if(fila.moveToFirst())
-            {
-                nombreApellido2.setText(fila.getString(0));
-                correoET.setText(fila.getString(1));
-                edad.setText(fila.getString(2));
-                if(fila.getString(3).equals("Masculino")){
-                    radioMas.isChecked();
-                }else{
-                    radioFem.isChecked();
+            try {
+                Cursor fila = bd.rawQuery("select nombre, edad, sexo, tiempo, nHemo, anemia from pacientes2 where correo=" + correoV.toString(), null);
+                if (fila.moveToFirst() || fila != null) {
+                    nombreApellido2.setText(fila.getString(0));
+                    correoET.setText(fila.getString(1));
+                    edad.setText(fila.getString(2));
+                    if (fila.getString(3).equals("Masculino")) {
+                        radioMas.isChecked();
+                    } else {
+                        radioFem.isChecked();
+                    }
+                    spinnerNH.setSelection(((ArrayAdapter) spinnerNH.getAdapter()).getPosition(fila.getString(4)));
+                    nivelHemo.setText(fila.getString(5));
+                    pAnemia.setText(fila.getString(6));
+                } else {
+                    mensaje("No se encontró paciente con ese correo");
                 }
-                spinnerNH.setSelection(((ArrayAdapter)spinnerNH.getAdapter()).getPosition(fila.getString(4)));
-                nivelHemo.setText(fila.getString(5));
-                pAnemia.setText(fila.getString(6));
-            }else{
+            } catch (Exception e){
                 mensaje("No se encontró paciente con ese correo");
             }
         }
