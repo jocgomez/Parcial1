@@ -13,12 +13,12 @@ public class AdminSQLiteOpenHelperP2 extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table pacientes2(correo text primary key, nombre text, edad integer, sexo text, tiempo text, nHemo double, anemia text)");
+        db.execSQL("create table pacientes2(cedula integer primary key, nombre text, correo text, edad integer, sexo text, tiempo text, nHemo double, anemia text)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnte, int versionNue) {
         db.execSQL("drop table if exists pacientes2");
-        db.execSQL("create table pacientes2(correo text primary key, nombre text, edad integer, sexo text, tiempo text, nHemo double, anemia text)");
+        db.execSQL("create table pacientes2(cedula integer primary key, nombre text, correo text, edad integer, sexo text, tiempo text, nHemo double, anemia text)");
     }
 
 }

@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".Punto2">
 
+    <EditText
+        android:id="@+id/etcedula"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="370dp"
+        android:ems="10"
+        android:hint="1234567890"
+        android:inputType="none|number" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="26dp"
+        android:layout_y="347dp"
+        android:text="Cédula:" />
+
     <Button
         android:id="@+id/modificar"
         android:layout_width="wrap_content"
@@ -44,7 +62,7 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="156dp"
+        android:layout_x="284dp"
         android:layout_y="366dp"
         android:onClick="validarNivel2"
         android:text="Validar" />

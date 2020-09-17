@@ -17,13 +17,14 @@ import android.widget.Toast;
 
 public class Punto2 extends Activity {
 
-    EditText nombreApellido2, nivelHemo, correoET, edad;
+    EditText nombreApellido2, nivelHemo, correoET, edad, cedula;
     TextView pAnemia;
     Spinner spinnerNH;
     RadioButton radioFem, radioMas;
 
     String nombreApellidoValue ="";
     String correoValue="", resultado ="", gender ="";
+    int cedulaValue = 0;
     int edadValue = 0;
     double nHemoValue = 0;
 
@@ -36,6 +37,7 @@ public class Punto2 extends Activity {
         nivelHemo = (EditText) findViewById(R.id.etNHemo);
         correoET = (EditText) findViewById(R.id.etCorreo);
         edad = (EditText) findViewById(R.id.etEdad);
+        cedula = (EditText) findViewById(R.id.etcedula);
 
         pAnemia = (TextView) findViewById(R.id.etAnemia);
 
@@ -59,7 +61,7 @@ public class Punto2 extends Activity {
         try {
             nHemoValue = Double.parseDouble(nivelHemo.getText().toString());
             edadValue = Integer.parseInt(edad.getText().toString());
-
+            cedulaValue = Integer.parseInt(cedula.getText().toString());
             edadFinal = calcularEdad(edadValue, spinnerNH.getSelectedItem().toString());
 
         }catch (Exception e){
@@ -155,7 +157,7 @@ public class Punto2 extends Activity {
             //En caso de presionar el botón realizara una acción
             public void onClick(DialogInterface dialog, int which) {
                 //Se inserta en la BD
-                if(consultarSiExiste(correoValue)){
+                if(consultarSiExiste(cedulaValue)){
                     modificarExamen();
                 }else{
                     if(radioFem.isChecked()){
@@ -163,7 +165,7 @@ public class Punto2 extends Activity {
                     }else if(radioMas.isChecked()){
                         gender = "Masculino";
                     }
-                    insertar(nombreApellidoValue, correoValue, edadValue, gender, spinnerNH.getSelectedItem().toString(), nHemoValue, resultado);
+                    insertar(nombreApellidoValue, correoValue, edadValue, gender, spinnerNH.getSelectedItem().toString(), nHemoValue, resultado, cedulaValue);
                 }
             }
         });
@@ -182,19 +184,19 @@ public class Punto2 extends Activity {
 
     }
 
-    public boolean consultarSiExiste(String correo)
+    public boolean consultarSiExiste(int cedula)
     {
         boolean existe = false;
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
         try{
-            Cursor fila = bd.rawQuery("select nombre, edad, sexo, tiempo, nHemo, anemia from pacientes2 where correo="+correo,null);
+            Cursor fila = bd.rawQuery("select nombre, correo, edad, sexo, tiempo, nHemo, anemia from pacientes2 where cedula="+cedula,null);
             if(fila.moveToFirst())
             {
                 existe = true;
             }else{
-                mensaje("No se encontró paciente con ese correo");
+
             }
         }catch (Exception e){
 
@@ -233,7 +235,7 @@ public class Punto2 extends Activity {
         dialogBuilder.create().show();
     }
 
-    public void insertar(String nombre, String correo, int edadVal, String sexoVal, String tiempo, double nivelHemoVal, String anemia){
+    public void insertar(String nombre, String correo, int edadVal, String sexoVal, String tiempo, double nivelHemoVal, String anemia, int cedulaPK){
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
@@ -245,6 +247,7 @@ public class Punto2 extends Activity {
         registro.put("tiempo",tiempo);
         registro.put("nHemo",nivelHemoVal);
         registro.put("anemia",anemia);
+        registro.put("cedula", cedulaPK);
         bd.insert("pacientes2",null,registro);
         bd.close();
 
@@ -254,23 +257,24 @@ public class Punto2 extends Activity {
         spinnerNH.setSelection(0);
         nivelHemo.setText("");
         pAnemia.setText("");
+        cedula.setText("");
 
         mensaje("Se guardó la información correctamente");
     }
 
     public void consultarBD(View view) {
-        String correoV = correoET.getText().toString();
-        if(correoV == "")
+        int cedulaPK = 0;
+        if(cedula.getText().toString() == "")
         {
-            mensaje("Es necesario el campo del correo");
+            mensaje("Es necesario el campo de cédula");
         }else{
-            correoV = correoET.getText().toString();
+            cedulaPK = Integer.parseInt(cedula.getText().toString());
 
             AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
             SQLiteDatabase bd = admin.getWritableDatabase();
 
             try {
-                Cursor fila = bd.rawQuery("select nombre, edad, sexo, tiempo, nHemo, anemia from pacientes2 where correo=" + correoV.toString(), null);
+                Cursor fila = bd.rawQuery("select nombre, correo, edad, sexo, tiempo, nHemo, anemia from pacientes2 where cedula=" + cedulaPK, null);
                 if (fila.moveToFirst() || fila != null) {
                     nombreApellido2.setText(fila.getString(0));
                     correoET.setText(fila.getString(1));
@@ -284,10 +288,10 @@ public class Punto2 extends Activity {
                     nivelHemo.setText(fila.getString(5));
                     pAnemia.setText(fila.getString(6));
                 } else {
-                    mensaje("No se encontró paciente con ese correo");
+                    mensaje("No se encontró paciente con esa cédula");
                 }
             } catch (Exception e){
-                mensaje("No se encontró paciente con ese correo");
+                mensaje("No se encontró paciente con esa cédula");
             }
         }
     }
@@ -296,32 +300,36 @@ public class Punto2 extends Activity {
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
-        String correo = "";
+        int cedulaPK = 0;
+        int edad2 = 0;
+        double nHemo2 = 0.0;
 
         try{
-            correo = correoValue;
+            cedulaPK = Integer.parseInt(cedula.getText().toString());
+            edad2 =  Integer.parseInt(edad.getText().toString());
+            nHemo2 = Double.parseDouble(nivelHemo.getText().toString());
         }catch (Exception e){
 
         }
 
-        String nombre = nombreApellidoValue;
-        int edad = edadValue;
-        double nHemo = nHemoValue;
+        String nombre = nombreApellido2.getText().toString();
         String tiempo = spinnerNH.getSelectedItem().toString();
+        String correo = correoET.getText().toString();
 
         ContentValues registro = new ContentValues();
         registro.put("nombre",nombre);
-        registro.put("edad",edad);
+        registro.put("correo",correo);
+        registro.put("edad",edad2);
         registro.put("tiempo",tiempo);
-        registro.put("nHemo",nHemo);
-        int cant = bd.update("pacientes2",registro,"correo="+correo,null);
+        registro.put("nHemo",nHemo2);
+        int cant = bd.update("pacientes2",registro,"cedula="+cedulaPK,null);
         bd.close();
 
 
         if(cant==1){
             mensaje("Se modificaron los datos correctamente");
         }else{
-            mensaje("No existe paciente con ese correo");
+            mensaje("No existe paciente con esa cédula");
         }
     }
 
@@ -329,10 +337,10 @@ public class Punto2 extends Activity {
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
-        String correo = "";
+        int cedulaPK = 0;
 
         try{
-            correo = correoValue;
+            cedulaPK = Integer.parseInt(cedula.getText().toString());
         }catch (Exception e){
 
         }
@@ -345,28 +353,28 @@ public class Punto2 extends Activity {
         registro.put("edad",edad);
         registro.put("tiempo",tiempo);
         registro.put("nHemo",nHemo);
-        int cant = bd.update("pacientes2",registro,"correo="+correo,null);
+        int cant = bd.update("pacientes2",registro,"cedula="+cedulaPK,null);
         bd.close();
 
 
         if(cant==1){
             mensaje("Se modificaron los datos correctamente");
         }else{
-            mensaje("No existe paciente con ese correo");
+            mensaje("No existe paciente con esa cédula");
         }
     }
 
     public void eliminarBD(View view) {
-        String correoV = "";
+        int cedulaPK = 0;
 
         AdminSQLiteOpenHelperP2 admin = new AdminSQLiteOpenHelperP2(this,"HemoHearth2",null,1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
         try {
-            correoV = correoValue;
+            cedulaPK = Integer.parseInt(cedula.getText().toString());
         }catch (Exception e){}
 
-        int cant = bd.delete("pacientes2","correo="+correoV,null);
+        int cant = bd.delete("pacientes2","cedula="+cedulaPK,null);
         bd.close();
 
         nombreApellido2.setText("");
@@ -374,11 +382,13 @@ public class Punto2 extends Activity {
         edad.setText("");
         spinnerNH.setSelection(0);
         nivelHemo.setText("");
+        cedula.setText("");
+        pAnemia.setText("");
 
         if(cant==1){
             mensaje("Se borró la información correctamente");
         }else{
-            mensaje("No existe dicha persona con ese correo");
+            mensaje("No existe dicha persona con esa cédula");
         }
     }
 
