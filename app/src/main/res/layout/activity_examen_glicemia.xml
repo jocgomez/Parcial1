@@ -6,13 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".ExamenGlicemia">
 
+    <ImageView
+
+        android:id="@+id/imageView4"
+        android:layout_width="1000dp"
+        android:layout_height="1500dp"
+        android:layout_x="-129dp"
+        android:layout_y="-221dp"
+        android:src="@drawable/bg2_01_01" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="232dp"
+        android:layout_height="170dp"
+        android:layout_x="-98dp"
+        android:layout_y="598dp"
+        android:src="@drawable/dot" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_x="269dp"
+        android:layout_y="157dp"
+        android:src="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="144dp"
+        android:layout_height="123dp"
+        android:layout_x="-69dp"
+        android:layout_y="9dp"
+        android:src="@drawable/little" />
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="152dp"
+        android:layout_x="110dp"
         android:layout_y="17dp"
-        android:text="Examen glicemia" />
+        android:fontFamily="@font/robotoblack"
+        android:text="Examen glicemia"
+        android:textColor="#FFF"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -20,21 +56,28 @@
         android:layout_height="wrap_content"
         android:layout_x="22dp"
         android:layout_y="57dp"
-        android:text="Tienes sintoma de" />
+        android:fontFamily="@font/robotoblack"
+        android:text="Tienes sintoma de"
+        android:textSize="18sp"
+        android:textColor="#FFF" />
 
     <TextView
         android:id="@+id/tvSintoma"
         android:layout_width="239dp"
         android:layout_height="wrap_content"
-        android:layout_x="144dp"
-        android:layout_y="57dp" />
+        android:layout_x="177dp"
+        android:layout_y="57dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="143dp"
         android:layout_height="wrap_content"
-        android:layout_x="143dp"
+        android:layout_x="123dp"
         android:layout_y="104dp"
+        android:background="@drawable/btncol"
         android:onClick="verResultado"
         android:text="Ver resultado" />
 </AbsoluteLayout>

@@ -20,11 +20,11 @@ public class MainActivity extends TabActivity {
         TabHost.TabSpec tab1 = tabHost.newTabSpec("Ejercicio 1");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Ejercicio 2");
 
-        tab1.setIndicator("Punto 1");//Setea el nombre del tab 1
+        tab1.setIndicator("HemoHearth");//Setea el nombre del tab 1
         //Intencion para cargar el contenido del tab 1
         tab1.setContent(new Intent(this,Punto1.class));
 
-        tab2.setIndicator("Punto 2");//Setea el nombre del tab 2
+        tab2.setIndicator("Anemia Test");//Setea el nombre del tab 2
         //Intencion para cargar el contenido del tab 2
         tab2.setContent(new Intent(this,Punto2.class));
 

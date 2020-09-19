@@ -6,64 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".Punto2">
 
+    <ImageView
+
+        android:id="@+id/imageView4"
+        android:layout_width="1000dp"
+        android:layout_height="1500dp"
+        android:layout_x="-129dp"
+        android:layout_y="-221dp"
+        android:src="@drawable/bg2_01_01" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="232dp"
+        android:layout_height="170dp"
+        android:layout_x="-98dp"
+        android:layout_y="598dp"
+        android:src="@drawable/dot" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_x="269dp"
+        android:layout_y="157dp"
+        android:src="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="144dp"
+        android:layout_height="123dp"
+        android:layout_x="-69dp"
+        android:layout_y="9dp"
+        android:src="@drawable/little" />
+
     <EditText
         android:id="@+id/etcedula"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
-        android:layout_x="25dp"
-        android:layout_y="370dp"
+        android:layout_x="231dp"
+        android:layout_y="130dp"
         android:ems="10"
-        android:hint="1234567890"
+        android:hint=""
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         android:inputType="none|number" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="26dp"
-        android:layout_y="347dp"
+        android:layout_x="231dp"
+        android:layout_y="106dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
+        android:textSize="16sp"
         android:text="Cédula:" />
 
     <Button
         android:id="@+id/modificar"
-        android:layout_width="wrap_content"
+        android:layout_width="99dp"
         android:layout_height="wrap_content"
-        android:layout_x="158dp"
-        android:layout_y="433dp"
+        android:layout_x="154dp"
+        android:layout_y="434dp"
+        android:background="@drawable/btncol"
         android:onClick="modificarBD"
         android:text="Modificar" />
 
     <Button
         android:id="@+id/eliminar2"
-        android:layout_width="wrap_content"
+        android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:layout_x="279dp"
-        android:layout_y="433dp"
+        android:layout_x="274dp"
+        android:layout_y="435dp"
+        android:background="@drawable/btncol"
         android:onClick="eliminarBD"
         android:text="Eliminar" />
 
     <TextView
         android:id="@+id/etAnemia"
-        android:layout_width="337dp"
+        android:layout_width="348dp"
         android:layout_height="72dp"
         android:layout_x="31dp"
-        android:layout_y="520dp" />
+        android:layout_y="520dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF" />
 
     <Button
         android:id="@+id/consultar2"
-        android:layout_width="wrap_content"
+        android:layout_width="108dp"
         android:layout_height="wrap_content"
         android:layout_x="26dp"
         android:layout_y="435dp"
+        android:background="@drawable/btncol"
         android:onClick="consultarBD"
         android:text="Consultar" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
-        android:layout_x="284dp"
-        android:layout_y="366dp"
+        android:layout_x="198dp"
+        android:layout_y="369dp"
+        android:background="@drawable/btncol"
         android:onClick="validarNivel2"
         android:text="Validar" />
 
@@ -73,7 +117,10 @@
         android:layout_height="wrap_content"
         android:layout_x="231dp"
         android:layout_y="196dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         android:text="Sexo:"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="68dp" />
 
@@ -84,8 +131,10 @@
         android:layout_x="23dp"
         android:layout_y="218dp"
         android:ems="10"
-        android:hint="Juanito Perez"
+        android:hint=""
         android:inputType="textPersonName"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="110dp" />
 
@@ -96,6 +145,9 @@
         android:layout_x="23dp"
         android:layout_y="196dp"
         android:text="Correo:"
+        android:textSize="16sp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="68dp" />
 
@@ -106,7 +158,9 @@
         android:layout_x="23dp"
         android:layout_y="296dp"
         android:ems="10"
-        android:hint="23"
+        android:hint=""
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         android:inputType="none|number" />
 
     <TextView
@@ -114,25 +168,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="24dp"
+        android:textSize="16sp"
         android:layout_y="273dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         android:text="Edad:" />
 
     <EditText
         android:id="@+id/etNHemo"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
-        android:layout_x="231dp"
-        android:layout_y="130dp"
+        android:layout_x="23dp"
+        android:layout_y="372dp"
         android:ems="10"
-        android:hint="0%"
+        android:hint=""
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         android:inputType="none|number" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="232dp"
-        android:layout_y="107dp"
+        android:layout_x="23dp"
+        android:layout_y="347dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
+        android:textSize="16sp"
         android:text="Nivel de Hemoglobina:" />
 
     <EditText
@@ -142,8 +204,10 @@
         android:layout_x="23dp"
         android:layout_y="130dp"
         android:ems="10"
-        android:hint="Juanito Perez"
+        android:hint=""
         android:inputType="textPersonName"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="110dp" />
 
@@ -151,9 +215,12 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="161dp"
-        android:layout_y="23dp"
+        android:layout_x="123dp"
+        android:layout_y="17dp"
+        android:fontFamily="@font/robotoblack"
         android:text="Test de Anemia"
+        android:textColor="#FFF"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="165dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -165,6 +232,9 @@
         android:layout_y="60dp"
         android:text="Complete la siguiente información"
         tools:layout_editor_absoluteX="37dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
+        android:textSize="18sp"
         tools:layout_editor_absoluteY="252dp" />
 
     <TextView
@@ -174,6 +244,9 @@
         android:layout_x="23dp"
         android:layout_y="108dp"
         android:text="Nombre y apellido:"
+        android:textSize="16sp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="68dp" />
 
@@ -181,6 +254,8 @@
         android:id="@+id/spinnerNH"
         android:layout_width="275dp"
         android:layout_height="43dp"
+        android:fontFamily="@font/robotoblack"
+        android:textColor="#FFF"
         android:layout_x="109dp"
         android:layout_y="296dp" />
 
@@ -194,12 +269,18 @@
             android:id="@+id/rBFem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/robotoblack"
+            android:textSize="16sp"
+            android:textColor="#FFF"
             android:text="Femenino" />
 
         <RadioButton
             android:id="@+id/rBMas"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/robotoblack"
+            android:textColor="#FFF"
             android:text="Masculino" />
     </RadioGroup>
 

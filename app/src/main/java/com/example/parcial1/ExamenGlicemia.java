@@ -119,7 +119,7 @@ public class ExamenGlicemia extends Activity {
         bd.close();
 
         //Creamos la intentcion para pasar de pantalla
-        Intent i = new Intent(this,Punto1.class);
+        Intent i = new Intent(this,MainActivity.class);
         i.putExtra("vacio",true);
         //Empezamos la intención
         startActivity(i);
@@ -164,7 +164,7 @@ public class ExamenGlicemia extends Activity {
         bd.close();
 
         //Creamos la intentcion para pasar de pantalla
-        Intent i = new Intent(this,Punto1.class);
+        Intent i = new Intent(this,MainActivity.class);
         i.putExtra("vacio",true);
         //Empezamos la intención
         startActivity(i);
